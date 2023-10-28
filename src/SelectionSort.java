@@ -1,17 +1,19 @@
+import java.util.Arrays;
+
 public class SelectionSort {
-    public static void sort(int[] array) {
-        for (int i = 0; i < array.length; i++) {    // i - номер текущего шага
-            int pos = i;
-            int min = array[i];
-            // цикл выбора наименьшего элемента
+    public static void main(String[] args) {
+        int[] array = {9, 1, 8, 2, 5};
+        for (int i = 0; i < array.length - 1; i++) {
+            int min = i;
             for (int j = i + 1; j < array.length; j++) {
-                if (array[j] < min) {
-                    pos = j;    // pos - индекс наименьшего элемента
-                    min = array[j];
+                if(array[j] < array[min]) { //just change < to > to sort in descending order
+                    min = j;
                 }
             }
-            array[pos] = array[i];
-            array[i] = min;    // меняем местами наименьший с array[i]
+            int temp = array[i];
+            array[i] = array[min];
+            array[min] = temp;
         }
+        System.out.println(Arrays.toString(array));
     }
 }
